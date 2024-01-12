@@ -4,9 +4,9 @@ import BaseSide from '@/layouts/components/BaseSide.vue'
 
 <template>
   <div class="app-container">
-    <div class="menu-container">
+    <!-- <div class="menu-container"> -->
       <BaseSide />
-    </div>
+    <!-- </div> -->
     <div class="home-container">
       <div class="main-container">
         <RouterView />

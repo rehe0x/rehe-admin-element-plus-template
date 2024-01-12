@@ -75,8 +75,14 @@ const toPage = (url: string) => {
 
 <style>
 .rh-menu-vertical-demo:not(.rh-menu--collapse) {
-  flex: 1;
+  /* flex: 1; */
   width: var(--rh-menu-width);
+}
+.rh-menu-vertical-demo{
+  height: calc(100vh - var(--rh-header-height) - 3px);
+  overflow: auto;
+  box-shadow: 1px 0 4px var(--rh-color-shadow);
+  border-right: solid 0px;
 }
 
 </style>
