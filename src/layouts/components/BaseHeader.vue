@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { inject } from 'vue'
 import { toggleDark } from '@/composables'
 import { Sunny, Moon } from '@element-plus/icons-vue'
 
@@ -8,6 +9,12 @@ const router = useRouter()
 const logout = () => {
   router.push("/login")
 }
+
+const globalConfig = inject('globalConfig');
+
+const Goback = (s:string) => {
+  globalConfig.size = s; // 修改全局配置中的 size 属性
+};
 </script>
 
 <template>
@@ -46,15 +53,20 @@ const logout = () => {
         <el-icon style="margin: 0;"><Sunny /></el-icon>
       </div>
     </el-menu-item>
-  
     <el-sub-menu index="5">
+      <template #title>布局大小</template>
+      <el-menu-item index="5-1" @click="Goback('large')">大</el-menu-item>
+      <el-menu-item index="5-2" @click="Goback('default')">中</el-menu-item>
+      <el-menu-item index="5-3" @click="Goback('small')">小</el-menu-item>
+    </el-sub-menu>
+    <el-sub-menu index="20">
       <template #title>游客:admin</template>
-      <el-menu-item index="5-1">个人中心</el-menu-item>
-      <el-menu-item index="5-2" @click="logout">退出</el-menu-item>
+      <el-menu-item index="20-1">个人中心</el-menu-item>
+      <el-menu-item index="20-2" @click="logout">退出</el-menu-item>
     </el-sub-menu>
   </el-menu>
 </template>
-<style>
+<style scoped>
 .header-logo {
   align-items: center;
   justify-content: center;
@@ -62,5 +74,16 @@ const logout = () => {
   font-size: 26px;
   margin-left: 10px;
   margin-right: 10px;
+}
+.el-menu-demo{
+  box-shadow: 0 1px 4px var(--rh-color-shadow);
+}
+
+.rh-menu--horizontal.rh-menu{
+  border-bottom: solid 0px;
+}
+
+.header .rh-menu .rh-menu-item a{
+  font-weight: bold;
 }
 </style>

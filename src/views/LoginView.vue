@@ -67,7 +67,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
 </script>
 
 <template>
-  <el-config-provider namespace="ep">
+  <el-config-provider namespace="rh">
     <div class="login-index">
       <div class="login-left">
         <h1>REHE ADMIN</h1>
@@ -132,25 +132,25 @@ const submitForm = (formEl: FormInstance | undefined) => {
 </template>
 
 <style scoped>
-.ep-form-item :deep(.ep-form-item__label) {
+.rh-form-item :deep(.rh-form-item__label) {
   font-size: 1.1rem;
 }
 
-.ep-form-item :deep(.ep-form-item__content .ep-form-item__error) {
+.rh-form-item :deep(.rh-form-item__content .rh-form-item__error) {
   font-size: 1rem;
 }
 
-.ep-form-item :deep(.ep-form-item__content .ep-input__wrapper) {
+.rh-form-item :deep(.rh-form-item__content .rh-input__wrapper) {
   font-size: 1.1rem;
 }
 
-.ep-form-item :deep(.ep-input__inner) {
+.rh-form-item :deep(.rh-input__inner) {
   height: 42px;
 }
 
 .login-index {
   display: flex;
-  height: calc(100vh - var(--ep-footer-height));
+  height: calc(100vh - var(--rh-footer-height));
 }
 .login-left {
   display: flex;
@@ -172,7 +172,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: var(--ep-footer-height);
+  height: var(--rh-footer-height);
   background: #eaebeb;
 }
 </style>

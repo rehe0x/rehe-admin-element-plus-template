@@ -27,8 +27,8 @@ const router = createRouter({
               component: () => import('@/views/home/Dashboard.vue')
             },
             {
-              path: '/testmain',
-              component: () => import('@/views/test/Test.vue')
+              path: '/system/user',
+              component: () => import('@/views/home/system/user/IndexView.vue')
             }
           ]
         },

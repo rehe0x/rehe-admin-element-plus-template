@@ -14,6 +14,6 @@
   flex-basis: auto;
   box-sizing: border-box;
   min-width: 0;
-  padding-top: var(--ep-header-height);
+  padding-top: var(--rh-header-height);
 }
 </style>

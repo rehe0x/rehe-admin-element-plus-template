@@ -29,7 +29,7 @@ import BaseSide from '@/layouts/components/BaseSide.vue'
   flex-basis: auto;
   box-sizing: border-box;
   min-width: 0;
-  padding-top: var(--ep-header-height);
+  padding-top: var(--rh-header-height);
 }
 
 .menu-container {
@@ -38,8 +38,8 @@ import BaseSide from '@/layouts/components/BaseSide.vue'
   overflow: auto;
   box-sizing: border-box;
   flex-shrink: 0;
-  height: calc(100vh - var(--ep-header-height) - 3px);
-  /* width: var(--ep-menu-width); */
+  height: calc(100vh - var(--rh-header-height) - 3px);
+  /* width: var(--rh-menu-width); */
 }
 
 .home-container {
@@ -49,7 +49,7 @@ import BaseSide from '@/layouts/components/BaseSide.vue'
   flex-basis: auto;
   box-sizing: border-box;
   min-width: 0;
-  height: calc(100vh - var(--ep-footer-height) - var(--ep-header-height) - 3px);
+  height: calc(100vh - var(--rh-footer-height) - var(--rh-header-height) - 3px);
 }
 
 .main-container {
@@ -57,7 +57,7 @@ import BaseSide from '@/layouts/components/BaseSide.vue'
   flex-basis: auto;
   overflow: auto;
   box-sizing: border-box;
-  padding: var(--ep-main-padding);
+  padding: var(--rh-main-padding);
 }
 
 .footer-container {
@@ -65,11 +65,11 @@ import BaseSide from '@/layouts/components/BaseSide.vue'
   align-items: center;
   justify-content: center;
   position: absolute;
-  /* width: calc(100vw - var(--ep-menu-width) - 0px); */
+  /* width: calc(100vw - var(--rh-menu-width) - 0px); */
   bottom: 0px;
   box-sizing: border-box;
   flex-shrink: 0;
-  height: var(--ep-footer-height);
-  padding: var(--ep-main-padding);
+  height: var(--rh-footer-height);
+  padding: var(--rh-main-padding);
 }
 </style>

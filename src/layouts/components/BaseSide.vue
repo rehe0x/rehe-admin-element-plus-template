@@ -1,13 +1,13 @@
 <template>
   <el-menu
     default-active="1"
-    class="ep-menu-vertical-demo"
+    class="rh-menu-vertical-demo"
     :collapse="isCollapse"
     unique-opened="true"
     @open="handleOpen"
     @close="handleClose"
   >
-  <el-menu-item index="1">
+  <el-menu-item index="1" @click="toPage('/')">
       <el-icon><icon-menu /></el-icon>
       <template #title>平台概括</template>
     </el-menu-item>
@@ -17,7 +17,7 @@
         <el-icon><location /></el-icon>
         <span>系统管理</span>
       </template>
-      <el-menu-item index="1-4-1">用户管理</el-menu-item>
+      <el-menu-item index="1-4-1" @click="toPage('/system/user')">用户管理</el-menu-item>
       <el-menu-item index="1-4-2">角色管理</el-menu-item>
       <el-menu-item index="1-4-3">权限管理</el-menu-item>
       <el-menu-item index="1-4-4">部门管理</el-menu-item>
@@ -74,8 +74,9 @@ const toPage = (url: string) => {
 </script>
 
 <style>
-.ep-menu-vertical-demo:not(.ep-menu--collapse) {
+.rh-menu-vertical-demo:not(.rh-menu--collapse) {
   flex: 1;
-  width: var(--ep-menu-width);
+  width: var(--rh-menu-width);
 }
+
 </style>

@@ -16,8 +16,8 @@ const toast = () => {
 </script>
 
 <template>
-  <el-config-provider namespace="ep">
-    <h1 color="$ep-color-primary">Dashboard</h1>
+  <el-config-provider namespace="rh">
+    <h1 color="$rh-color-primary">Dashboard</h1>
   </el-config-provider>
   <p>
     See
@@ -79,10 +79,10 @@ const toast = () => {
 </template>
 
 <style>
-.ep-button {
+.rh-button {
   margin: 4px;
 }
-.ep-button + .ep-button {
+.rh-button + .rh-button {
   margin-left: 0;
   margin: 4px;
 }

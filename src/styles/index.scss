@@ -2,15 +2,22 @@
 @use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
 // @use "./element/dark.scss";
 :root {
-  // --ep-color-primary: red;
-  --ep-header-padding: 0 20px;
-  --ep-header-height: 59px;
-  --ep-menu-width: 200px;
+  // --rh-color-primary: red;
+  --rh-header-padding: 0 20px;
+  --rh-header-height: 59px;
+  --rh-menu-width: 200px;
 
-  --ep-footer-padding: 0 20px;
-  --ep-footer-height: 30px;
+  --rh-footer-padding: 0 20px;
+  --rh-footer-height: 30px;
 
-  --ep-main-padding: 20px;
+  --rh-main-padding: 20px;
+
+  --rh-color-shadow: rgba(0,21,41,.08);
+}
+
+  /* 自定义深色背景颜色 */
+html.dark {
+  --rh-color-shadow: rgba(255, 255, 255, 0.08);;
 }
 
 body {
@@ -22,13 +29,17 @@ body {
 }
 
 a {
-  color: var(--ep-color-primary);
+  color: var(--rh-color-primary);
   text-decoration: none;
 }
 
 code {
   border-radius: 2px;
   padding: 2px 4px;
-  background-color: var(--ep-color-primary-light-9);
-  color: var(--ep-color-primary);
+  background-color: var(--rh-color-primary-light-9);
+  color: var(--rh-color-primary);
+}
+
+.rh-divider--horizontal{
+  margin: 20px 0;
 }

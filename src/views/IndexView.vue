@@ -3,7 +3,7 @@ import BaseHeader from '@/layouts/components/BaseHeader.vue'
 </script>
 
 <template>
-  <el-config-provider namespace="ep">
+  <el-config-provider namespace="rh">
     <div class="common-layout">
       <div class="header">
         <BaseHeader />
@@ -27,7 +27,7 @@ import BaseHeader from '@/layouts/components/BaseHeader.vue'
   position: fixed;
   box-sizing: border-box;
   flex-shrink: 0;
-  height: var(--ep-header-height);
+  height: var(--rh-header-height);
   width: 100%;
   z-index: 999;
 }
