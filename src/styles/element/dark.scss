@@ -2,8 +2,21 @@
 
 $--colors: (
   'primary': (
-    'base': #589ef8
-  )
+    'base': #476BD6
+  ),
+  'success': (
+    'base': #399200
+  ),
+  'warning': (
+    'base': #A67F00
+  ),
+  'danger': (
+    'base': #A63600
+  ),
+  'error': (
+    'base': #A63600
+  ),
+  
 );
 
 @forward 'element-plus/theme-chalk/src/dark/var.scss' with (

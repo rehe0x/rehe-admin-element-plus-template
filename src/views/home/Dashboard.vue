@@ -12,6 +12,9 @@ const curDate = ref('')
 const toast = () => {
   console.log(11)
   ElMessage.success('Hello')
+  ElMessage.info('Hello')
+  ElMessage.warning('Hello')
+  ElMessage.error('Hello')
 }
 </script>
 
