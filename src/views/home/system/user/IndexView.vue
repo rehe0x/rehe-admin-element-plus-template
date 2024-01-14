@@ -18,26 +18,8 @@
     <el-divider/>
 
     <div>
-      <div ref="domRef" >
-        <el-form :inline="true" :model="formInline" class="query-form-inline">
-    <el-form-item label="">
-      <el-input v-model="formInline.user" placeholder="关键字" clearable />
-    </el-form-item>
-    <el-form-item label="">
-      <el-input v-model="formInline.user" placeholder="关键字" clearable />
-    </el-form-item>
-    <el-form-item label="">
-      <el-input v-model="formInline.user" placeholder="关键字" clearable />
-    </el-form-item>
-    <el-form-item label="">
-      <el-input v-model="formInline.user" placeholder="关键字" clearable />
-    </el-form-item> <el-form-item label="">
-      <el-input v-model="formInline.user" placeholder="关键字" clearable />
-    </el-form-item> 
-    <el-form-item label="" >
-      <el-input v-model="formInline.user" placeholder="关键字" clearable />
-    </el-form-item>
-    <el-form-item label="">
+      <QueryItemSlot @query="fff()" :formInline="formInline">
+        <el-form-item label="">
       <el-select
         v-model="formInline.region"
         placeholder="部门"
@@ -55,14 +37,31 @@
         clearable
       />
     </el-form-item>
-    <el-form-item>
-      <el-button type="primary" @click="onSubmit">搜索</el-button>
-      <el-button v-if="sfgg" type="primary" @click="gg">更多</el-button>
-
+        <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
     </el-form-item>
-   
-  </el-form>
-      </div>
+    <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item>
+    <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item>
+    <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item> <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item> 
+    <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item> <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item> 
+    <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item> <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item> 
+    </QueryItemSlot>
      
     <el-button>Default</el-button>
     <el-button type="primary">Primary</el-button>
@@ -92,55 +91,69 @@
       @current-change="handleCurrentChange"
     />
     </div>
+    
   </template>
   
   <script setup lang="ts">
   import { ref,reactive,onMounted } from 'vue'
 
-  import { Sunny, Moon } from '@element-plus/icons-vue'
+  import { Sunny, Moon,ArrowUpBold,ArrowDownBold } from '@element-plus/icons-vue'
 
-  import { ElNotification as notify } from 'element-plus'
+  import { ElNotification as notify,FormInstance } from 'element-plus'
+  import QueryItemSlot from './QueryItemSlot.vue'
+
+  const zktext = ref('展开')
+  const zkis = ref(false)
 
   const domRef = ref(null)
-  const sfgg = ref(false)
+  const domRef2 = ref<FormInstance>()
+    const formInline = reactive({
+  user: '',
+  region: '',
+  date: '',
+})
 
-  const sf = async () => {
-    console.log(domRef.value.offsetHeight)
-    if (domRef.value.clientHeight >= 100){
+  const fff = () => {
+
+    console.log(formInline.user)
+  }
+  const sf =  () => {
+    if (domRef.value.offsetHeight >= 100){
+      console.log(domRef2.value)
       const itemList = domRef.value.children[0].children;
-      Object.keys(itemList).reverse().forEach((key) => {
-        if (key != itemList.length-1){
-          console.log(key)
-          if (domRef.value.clientHeight >= 100) {
-            sfgg.value = true
-            itemList[key].style.display = 'none';
+      for (let index = itemList.length - 2; index >= 0; index--) {
+        const element = itemList[index];
+        if (domRef.value.offsetHeight >= 100) {
+            
+            element.style.display = 'none';
 
           }
-        }
-       
-    });
-
+      }
     }
 }
 
 const gg  = () => {
-  const itemList = domRef.value.children[0].children;
-  console.log(typeof itemList)
-  Object.keys(itemList).reverse().forEach((key) => {
-    if (itemList[key].style.display == 'none') {
-      itemList[key].style.display = ''
-    }
-    console.log(itemList[key].style.display)
-    console.log(itemList[key]);
-});
-  // console.log(itemList)
-  // itemList.array.forEach(element => {
-  //   console.log(element)
-  // });
+  if (zkis.value) {
+    zktext.value='展开'
+    zkis.value = false
+    sf()
+  }else{
+    zktext.value='收起'
+    zkis.value = true
+    const itemList = domRef.value.children[0].children;
+    console.log(typeof itemList)
+    Object.keys(itemList).reverse().forEach((key) => {
+      if (itemList[key].style.display == 'none') {
+        itemList[key].style.display = ''
+      }
+      console.log(itemList[key].style.display)
+      console.log(itemList[key]);
+  });
+  }
 }
 
   onMounted(() => {
-    sf()
+    // sf()
   //   console.log(domRef.value.offsetHeight)
   //   if (domRef.value.clientHeight === 100){
   //     const itemList = domRef.value.children[0].children;
@@ -158,11 +171,6 @@ const gg  = () => {
 
 
 
-  const formInline = reactive({
-  user: '',
-  region: '',
-  date: '',
-})
 
 const onSubmit = () => {
   console.log('submit!')
@@ -367,7 +375,7 @@ const tableData: User[] = [
   --rh-select-width: 220px;
 }
 
-.query-form-inline .rh-form-item {
+/* .query-form-inline .rh-form-item {
   margin-right: 20px
-}
+} */
 </style>
