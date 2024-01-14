@@ -4,9 +4,9 @@ import BaseSide from '@/layouts/components/BaseSide.vue'
 
 <template>
   <div class="app-container">
-    <!-- <div class="menu-container"> -->
+    <div class="menu-container">
       <BaseSide />
-    <!-- </div> -->
+    </div>
     <div class="home-container">
       <div class="main-container">
         <RouterView />
@@ -33,12 +33,12 @@ import BaseSide from '@/layouts/components/BaseSide.vue'
 }
 
 .menu-container {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   overflow: auto;
   box-sizing: border-box;
   flex-shrink: 0;
-  height: calc(100vh - var(--rh-header-height) - 3px);
+  height: calc(100vh - var(--rh-header-height) - 3px); */
   /* width: var(--rh-menu-width); */
 }
 

@@ -18,6 +18,59 @@
     <el-divider/>
 
     <div>
+      <div ref="domRef" >
+        <el-form :inline="true" :model="formInline" class="query-form-inline">
+    <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item>
+    <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item>
+    <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item>
+    <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item> <el-form-item label="">
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item> 
+    <el-form-item label="" >
+      <el-input v-model="formInline.user" placeholder="关键字" clearable />
+    </el-form-item>
+    <el-form-item label="">
+      <el-select
+        v-model="formInline.region"
+        placeholder="部门"
+        clearable
+      >
+        <el-option label="Zone one" value="shanghai" />
+        <el-option label="Zone two" value="beijing" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="">
+      <el-date-picker
+        v-model="formInline.date"
+        type="date"
+        placeholder="注册时间"
+        clearable
+      />
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="onSubmit">搜索</el-button>
+      <el-button v-if="sfgg" type="primary" @click="gg">更多</el-button>
+
+    </el-form-item>
+   
+  </el-form>
+      </div>
+     
+    <el-button>Default</el-button>
+    <el-button type="primary">Primary</el-button>
+    <el-button type="success">Success</el-button>
+    <el-button type="info">Info</el-button>
+    <el-button type="warning">Warning</el-button>
+    <el-button type="danger">Danger</el-button>
+
       <el-table
     :data="tableData"
     style="width: 100%"
@@ -42,11 +95,79 @@
   </template>
   
   <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref,reactive,onMounted } from 'vue'
 
   import { Sunny, Moon } from '@element-plus/icons-vue'
 
   import { ElNotification as notify } from 'element-plus'
+
+  const domRef = ref(null)
+  const sfgg = ref(false)
+
+  const sf = async () => {
+    console.log(domRef.value.offsetHeight)
+    if (domRef.value.clientHeight >= 100){
+      const itemList = domRef.value.children[0].children;
+      Object.keys(itemList).reverse().forEach((key) => {
+        if (key != itemList.length-1){
+          console.log(key)
+          if (domRef.value.clientHeight >= 100) {
+            sfgg.value = true
+            itemList[key].style.display = 'none';
+
+          }
+        }
+       
+    });
+
+    }
+}
+
+const gg  = () => {
+  const itemList = domRef.value.children[0].children;
+  console.log(typeof itemList)
+  Object.keys(itemList).reverse().forEach((key) => {
+    if (itemList[key].style.display == 'none') {
+      itemList[key].style.display = ''
+    }
+    console.log(itemList[key].style.display)
+    console.log(itemList[key]);
+});
+  // console.log(itemList)
+  // itemList.array.forEach(element => {
+  //   console.log(element)
+  // });
+}
+
+  onMounted(() => {
+    sf()
+  //   console.log(domRef.value.offsetHeight)
+  //   if (domRef.value.clientHeight === 100){
+  //     const itemList = domRef.value.children[0].children;
+
+  //     itemList[itemList.length-2].style.display = 'none';
+
+  //     itemList[itemList.length-2].style.display = 'none';
+
+
+  //   }
+
+  //   console.log(domRef.value.children[0].children)
+  // console.log(domRef.value)
+})
+
+
+
+  const formInline = reactive({
+  user: '',
+  region: '',
+  date: '',
+})
+
+const onSubmit = () => {
+  console.log('submit!')
+}
+
   const currentPage4 = ref(4)
   const pageSize4 = ref(100)
   const handleSizeChange = (val: number) => {
@@ -236,5 +357,17 @@ const tableData: User[] = [
 }
 .rh-table .success-row {
   --rh-table-tr-bg-color: var(--rh-color-success-light-9);
+}
+
+.query-form-inline .rh-input {
+  --rh-input-width: 220px;
+}
+
+.query-form-inline .rh-select {
+  --rh-select-width: 220px;
+}
+
+.query-form-inline .rh-form-item {
+  margin-right: 20px
 }
 </style>
