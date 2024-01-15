@@ -1,11 +1,24 @@
 <script setup lang="ts">
+  import { ref,reactive,onMounted,provide } from 'vue'
+
 import BaseSide from '@/layouts/components/BaseSide.vue'
+
+
+const sf = ref(false)
+function updateLocation() {
+  console.log(123)
+  sf.value = !sf.value
+  console.log(sf.value)
+}
+
+provide('location', updateLocation)
+
 </script>
 
 <template>
   <div class="app-container">
     <div class="menu-container">
-      <BaseSide />
+      <BaseSide :isCollapse="sf"/>
     </div>
     <div class="home-container">
       <div class="main-container">

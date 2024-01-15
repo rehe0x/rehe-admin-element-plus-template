@@ -81,7 +81,7 @@ const toast = () => {
   </p>
 </template>
 
-<style>
+<style scoped>
 .rh-button {
   margin: 4px;
 }

@@ -54,13 +54,31 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref,provide,watch } from 'vue'
 import { Location, Document, Menu as IconMenu, Setting } from '@element-plus/icons-vue'
 
 import { useRouter } from 'vue-router'
 
+const props = defineProps(['isCollapse'])
+
+// const collapse = ref(false)
+
 const router = useRouter()
-const isCollapse = ref(false)
+
+//  /*监听props*/
+//  watch(props, (newProps) => {
+//   collapse.value = newProps.isCollapse;
+//     });
+// const isCollapse = ref(props.isCollapse)
+
+// function updateLocation() {
+//   isCollapse.value = !isCollapse.value
+// }
+
+// provide('location', {
+//   updateLocation
+// })
+
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
@@ -73,7 +91,7 @@ const toPage = (url: string) => {
 }
 </script>
 
-<style>
+<style scoped>
 .rh-menu-vertical-demo:not(.rh-menu--collapse) {
   /* flex: 1; */
   width: var(--rh-menu-width);
