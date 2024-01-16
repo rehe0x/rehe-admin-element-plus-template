@@ -1,25 +1,21 @@
 <script lang="ts" setup>
 import { inject } from 'vue'
-import { toggleDark } from '@/composables'
-import { Sunny, Moon } from '@element-plus/icons-vue'
-
 import { useRouter } from 'vue-router'
+import { toggleDark } from '@/composables'
+import { Sunny } from '@element-plus/icons-vue'
 
+const globalConfig = inject('globalConfig') as any;
 const router = useRouter()
+
 const logout = () => {
   router.push("/login")
 }
 
-const globalConfig = inject('globalConfig');
-
-const Goback = (s:string) => {
-  globalConfig.size = s; // 修改全局配置中的 size 属性
-};
 </script>
 
 <template>
-  <el-menu class="el-menu-demo" :ellipsis="false" mode="horizontal">
-    <div class="header-logo" style="display: flex">
+  <el-menu class="el-menu-rh" :ellipsis="false" mode="horizontal">
+    <div class="header-logo">
       <!-- LOGO ADMIN -->
       <h3>REHE ADMIN</h3>
     </div>
@@ -55,9 +51,9 @@ const Goback = (s:string) => {
     </el-menu-item>
     <el-sub-menu index="5">
       <template #title>布局大小</template>
-      <el-menu-item index="5-1" @click="Goback('large')">大</el-menu-item>
-      <el-menu-item index="5-2" @click="Goback('default')">中</el-menu-item>
-      <el-menu-item index="5-3" @click="Goback('small')">小</el-menu-item>
+      <el-menu-item index="5-1" @click="globalConfig.size = 'large'">大</el-menu-item>
+      <el-menu-item index="5-2" @click="globalConfig.size = 'default'">中</el-menu-item>
+      <el-menu-item index="5-3" @click="globalConfig.size = 'small'">小</el-menu-item>
     </el-sub-menu>
     <el-sub-menu index="20">
       <template #title>游客:admin</template>
@@ -75,7 +71,7 @@ const Goback = (s:string) => {
   margin-left: 10px;
   margin-right: 10px;
 }
-.el-menu-demo{
+.el-menu-rh{
   box-shadow: 0 1px 4px var(--rh-color-shadow);
 }
 

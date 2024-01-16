@@ -1,8 +1,28 @@
+<script lang="ts" setup>
+import { ref,provide,watch,inject } from 'vue'
+import { useRouter } from 'vue-router'
+import { Location, Document, Menu as IconMenu, Setting } from '@element-plus/icons-vue'
+
+const baseSideCollapse = inject('baseSideCollapse')
+
+const router = useRouter()
+
+const handleOpen = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
+const handleClose = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
+const toPage = (url: string) => {
+  router.push(url)
+}
+</script>
+
 <template>
   <el-menu
     default-active="1"
     class="rh-menu-vertical-demo"
-    :collapse="isCollapse"
+    :collapse="baseSideCollapse"
     unique-opened="true"
     @open="handleOpen"
     @close="handleClose"
@@ -44,7 +64,7 @@
       </template>
     </el-menu-item>
 
-    <el-menu-item index="999" @click="isCollapse  = !isCollapse">
+    <el-menu-item index="999" @click="baseSideCollapse  = !baseSideCollapse">
       <el-icon><setting /></el-icon>
       <template #title>折叠</template>
     </el-menu-item>
@@ -52,44 +72,6 @@
    
   </el-menu>
 </template>
-
-<script lang="ts" setup>
-import { ref,provide,watch } from 'vue'
-import { Location, Document, Menu as IconMenu, Setting } from '@element-plus/icons-vue'
-
-import { useRouter } from 'vue-router'
-
-const props = defineProps(['isCollapse'])
-
-// const collapse = ref(false)
-
-const router = useRouter()
-
-//  /*监听props*/
-//  watch(props, (newProps) => {
-//   collapse.value = newProps.isCollapse;
-//     });
-// const isCollapse = ref(props.isCollapse)
-
-// function updateLocation() {
-//   isCollapse.value = !isCollapse.value
-// }
-
-// provide('location', {
-//   updateLocation
-// })
-
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-
-const toPage = (url: string) => {
-  router.push(url)
-}
-</script>
 
 <style scoped>
 .rh-menu-vertical-demo:not(.rh-menu--collapse) {

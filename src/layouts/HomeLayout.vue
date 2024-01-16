@@ -1,33 +1,28 @@
 <script setup lang="ts">
-  import { ref,reactive,onMounted,provide } from 'vue'
+import { ref, reactive, onMounted, provide } from 'vue'
 
 import BaseSide from '@/layouts/components/BaseSide.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue'
 
-
-const sf = ref(false)
-function updateLocation() {
-  console.log(123)
-  sf.value = !sf.value
-  console.log(sf.value)
-}
-
-provide('location', updateLocation)
-
+// home下组件需要全局状态 vue3自带的依赖注入 provide 
+const baseSideCollapse = ref(false) //左侧菜单展开或收起
+provide('baseSideCollapse', baseSideCollapse)
 </script>
 
 <template>
   <div class="app-container">
-    <div class="menu-container">
-      <BaseSide :isCollapse="sf"/>
+    <div class="left-container">
+      <BaseSide  />
     </div>
-    <div class="home-container">
-      <div class="main-container">
+    <div class="right-container">
+      <div class="main">
+        <Breadcrumb />
         <RouterView />
       </div>
-      <div class="footer-container">
+      <div class="footer">
         <p>
           Edit
-          <code>2020@abcdefg</code> to test components.
+          <code>2024@abcdefg</code> to demo.
         </p>
       </div>
     </div>
@@ -45,7 +40,7 @@ provide('location', updateLocation)
   padding-top: var(--rh-header-height);
 }
 
-.menu-container {
+.left-container {
   /* display: flex;
   flex-direction: column;
   overflow: auto;
@@ -55,7 +50,7 @@ provide('location', updateLocation)
   /* width: var(--rh-menu-width); */
 }
 
-.home-container {
+.right-container {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -65,7 +60,7 @@ provide('location', updateLocation)
   height: calc(100vh - var(--rh-footer-height) - var(--rh-header-height) - 3px);
 }
 
-.main-container {
+.right-container .main {
   flex: 1;
   flex-basis: auto;
   overflow: auto;
@@ -73,7 +68,7 @@ provide('location', updateLocation)
   padding: var(--rh-main-padding);
 }
 
-.footer-container {
+.right-container .footer {
   display: flex;
   align-items: center;
   justify-content: center;

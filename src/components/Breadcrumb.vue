@@ -1,20 +1,17 @@
 <script lang="ts" setup>
 import { ref, reactive, onMounted, inject } from 'vue'
-const updateLocation = inject('location')
+const baseSideCollapse = inject('baseSideCollapse')
 
 </script>
 <template>
-  <div
-    aria-label="A complete example of page header"
-    style="display: flex; align-items: center"
-    @click="updateLocation"
-  >
+  <div style="display: flex; align-items: center">
     <svg
       class="hamburger"
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
       width="64"
       height="64"
+      @click="baseSideCollapse = !baseSideCollapse"
     >
       <path
         fill="var(--rh-text-color-primary)"
@@ -29,3 +26,12 @@ const updateLocation = inject('location')
   </div>
   <el-divider />
 </template>
+
+<style scoped>
+.hamburger {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+</style>

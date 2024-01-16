@@ -11,15 +11,16 @@ const emit = defineEmits(['query'])
 const domRef = ref<Element>()
 const unfold = ref(true)
 const unfoldStatus = ref(false)
-const ruleFormRef = ref(null)
+const ruleFormRef = ref<FormInstance>()
 
 
 const onSubmit = () => {
   emit('query')
 }
-const resetForm = () => {
-  const rf = ruleFormRef.value! as FormInstance
-  rf.resetFields()
+
+const resetForm = (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  formEl.resetFields()
 }
 
 const init = () => {
@@ -69,7 +70,7 @@ onMounted(() => {
     <el-form ref="ruleFormRef" :inline="true"  :model="queryForm" class="query-form-inline">
       <slot />
       <el-form-item>
-        <el-button @click="resetForm()">重置</el-button>
+        <el-button @click="resetForm(ruleFormRef)">重置</el-button>
         <el-button type="primary" @click="onSubmit">查询</el-button>
         <el-button v-if="unfold" type="primary" link @click="openOrUnfold"
           >{{ unfoldStatus ? '收起':'展开' }}
