@@ -1,6 +1,9 @@
 # rehe-admin-element-plus-template
+## vue3+ts+element-plus 后台管理模版 
+### 很基础的一个模块，自定义主题，没过于封装
 ![image](src/assets/WX20240117-120809@2x.png)
-This template should help get you started developing with Vue 3 in Vite.
+![image](src/assets/WX20240117-120825@2x.png)
+![image](src/assets/WX20240117-121927@2x.png)
 
 ## Recommended IDE Setup
 
