@@ -1,5 +1,5 @@
 # rehe-admin-element-plus-template
-
+![image](src/assets/WX20240117-120809@2x.png)
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
