@@ -2,7 +2,7 @@
 import { ref, reactive, onMounted, provide } from 'vue'
 
 import BaseSide from '@/layouts/components/BaseSide.vue'
-import Breadcrumb from '@/components/Breadcrumb.vue'
+import BreadCrumb from '@/components/BreadCrumb.vue'
 
 // home下组件需要全局状态 vue3自带的依赖注入 provide 
 const baseSideCollapse = ref(false) //左侧菜单展开或收起
@@ -16,7 +16,7 @@ provide('baseSideCollapse', baseSideCollapse)
     </div>
     <div class="right-container">
       <div class="main">
-        <Breadcrumb />
+        <BreadCrumb />
         <RouterView />
       </div>
       <div class="footer">

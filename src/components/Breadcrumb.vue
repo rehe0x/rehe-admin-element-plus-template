@@ -1,6 +1,27 @@
 <script lang="ts" setup>
-import { ref, reactive, onMounted, inject } from 'vue'
+import { ref, reactive, onMounted, inject, watch } from 'vue'
+import { useRoute } from 'vue-router'
+
 const baseSideCollapse = inject('baseSideCollapse')
+const route = useRoute()
+const breadcrumbData = ref([]) as any
+
+const getBreadcrumbData = () => {
+  breadcrumbData.value = route.matched.filter((item) => {
+    return item.meta && item.meta.title
+  })
+}
+
+// 监听路由发生改变时触发
+watch(
+  route,
+  () => {
+    getBreadcrumbData()
+  },
+  {
+    immediate: true
+  }
+)
 
 </script>
 <template>
@@ -19,9 +40,15 @@ const baseSideCollapse = inject('baseSideCollapse')
       />
     </svg>
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>系统管理</el-breadcrumb-item>
-      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+      <template v-for="(item, index) in breadcrumbData as any" :key="item.path">
+        <el-breadcrumb-item v-if="item.meta.parentTitle">{{
+          item.meta.parentTitle
+        }}</el-breadcrumb-item>
+        <el-breadcrumb-item v-if="index === 0" :to="{ path: '/' }">{{
+          item.meta.title
+        }}</el-breadcrumb-item>
+        <el-breadcrumb-item v-else>{{ item.meta.title }}</el-breadcrumb-item>
+      </template>
     </el-breadcrumb>
   </div>
   <el-divider />

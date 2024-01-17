@@ -21,7 +21,7 @@ const toPage = (url: string) => {
 <template>
   <el-menu
     default-active="1"
-    class="rh-menu-vertical-demo"
+    class="rh-menu-vertical"
     :collapse="baseSideCollapse"
     unique-opened="true"
     @open="handleOpen"
@@ -38,7 +38,7 @@ const toPage = (url: string) => {
         <span>系统管理</span>
       </template>
       <el-menu-item index="1-4-1" @click="toPage('/system/user')">用户管理</el-menu-item>
-      <el-menu-item index="1-4-2">角色管理</el-menu-item>
+      <el-menu-item index="1-4-2" @click="toPage('/system/role')">角色管理</el-menu-item>
       <el-menu-item index="1-4-3">权限管理</el-menu-item>
       <el-menu-item index="1-4-4">部门管理</el-menu-item>
     </el-sub-menu>
@@ -74,11 +74,11 @@ const toPage = (url: string) => {
 </template>
 
 <style scoped>
-.rh-menu-vertical-demo:not(.rh-menu--collapse) {
+.rh-menu-vertical:not(.rh-menu--collapse) {
   /* flex: 1; */
   width: var(--rh-menu-width);
 }
-.rh-menu-vertical-demo{
+.rh-menu-vertical{
   height: calc(100vh - var(--rh-header-height) - 3px);
   overflow: auto;
   box-shadow: 1px 0 4px var(--rh-color-shadow);

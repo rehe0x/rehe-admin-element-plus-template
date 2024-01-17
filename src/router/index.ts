@@ -21,14 +21,32 @@ const router = createRouter({
           // UserProfile 将被渲染到 User 的 <router-view> 内部
           path: '/',
           component: () => import('@/layouts/HomeLayout.vue'),
+          meta:{
+            title: '首页'
+          },
           children: [
             {
               path: '/',
-              component: () => import('@/views/home/Dashboard.vue')
+              component: () => import('@/views/home/Dashboard.vue'),
+              meta:{
+                title: '平台概括'
+              },
             },
             {
               path: '/system/user',
-              component: () => import('@/views/home/system/user/IndexView.vue')
+              component: () => import('@/views/home/system/user/IndexView.vue'),
+              meta:{
+                parentTitle: '系统管理',
+                title: '用户管理'
+              },
+            },
+            {
+              path: '/system/role',
+              component: () => import('@/views/home/system/role/IndexView.vue'),
+              meta:{
+                parentTitle: '系统管理',
+                title: '角色管理'
+              },
             }
           ]
         },
