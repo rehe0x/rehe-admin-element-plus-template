@@ -1,6 +1,6 @@
 # rehe-admin-element-plus-template
 ## vue3+ts+element-plus 后台管理模版 
-### 很基础的一个模块，自定义主题，没过于封装
+### 很基础的一个模版，简约风格，主题切换
 ![image](src/assets/WX20240117-120809@2x.png)
 ![image](src/assets/WX20240117-120825@2x.png)
 ![image](src/assets/WX20240117-121927@2x.png)
