@@ -1,6 +1,7 @@
 # rehe-admin-element-plus-template
 ## vue3+ts+element-plus 后台管理模版 
 ### 很基础的一个模版，简约风格，主题切换
+### antd新的圆角版本太喜欢了 这个放弃了
 ![image](src/assets/WX20240117-120809@2x.png)
 ![image](src/assets/WX20240117-120825@2x.png)
 ![image](src/assets/WX20240117-121927@2x.png)
